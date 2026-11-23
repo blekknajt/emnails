@@ -1,0 +1,57 @@
+{{- $s := hugo.Data.salon -}}
+{{- $page := "" -}}
+{{- with .File }}{{ $page = .BaseFileName }}{{ end -}}
+{{- $menu := slice
+  (dict "id" "uslugi" "url" "uslugi/" "nazwa" "Usługi")
+  (dict "id" "galeria" "url" "galeria/" "nazwa" "Galeria")
+  (dict "id" "o-salonie" "url" "o-salonie/" "nazwa" "O salonie")
+  (dict "id" "kontakt" "url" "kontakt/" "nazwa" "Kontakt i zapisy")
+-}}
+{{- if site.Params.pokazKomunikat }}
+<div class="announce-bar" role="region" aria-label="Aktualność">
+  <div class="container announce-bar__inner">
+    <span>{{ $s.komunikat.tekst }}</span>
+    <a href="{{ $s.komunikat.link | relURL }}">{{ $s.komunikat.etykietaLinku }} {{ partial "ikona.html" "strzalka" }}</a>
+  </div>
+</div>
+{{- end }}
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="{{ "" | relURL }}"{{ if eq $page "_index" }} aria-current="page"{{ end }}>
+      <span class="brand__mark" aria-hidden="true">
+        <img src="{{ "img/favicon.svg" | relURL }}" width="42" height="42" alt="">
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">{{ $s.nazwa }}</span>
+        <span class="brand__sub">Salon stylizacji paznokci · {{ $s.miasto }}</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Menu główne">
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-menu">
+        {{ partial "ikona.html" "menu" }}
+        {{ partial "ikona.html" "zamknij" }}
+        <span>Menu</span>
+      </button>
+      <ul id="site-menu" class="site-menu">
+        {{- range $menu }}
+        <li><a href="{{ .url | relURL }}"{{ if eq $page .id }} aria-current="page"{{ end }}>{{ .nazwa }}</a></li>
+        {{- end }}
+        <li class="site-menu__mobile-cta">
+          <a class="btn btn--primary btn--full" href="tel:{{ $s.tel }}">{{ partial "ikona.html" "telefon" }}Zadzwoń: {{ $s.telefon }}</a>
+          <a class="btn btn--outline btn--full" href="{{ $s.facebook }}" target="_blank" rel="noopener noreferrer">{{ partial "ikona.html" "facebook" }}Profil na Facebooku</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="icon-btn" href="{{ $s.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="EMnails na Facebooku">
+        {{ partial "ikona.html" "facebook" }}
+      </a>
+      <a class="header-phone" href="tel:{{ $s.tel }}" aria-label="Zadzwoń do salonu EMnails: {{ $s.telefon }}">
+        {{ partial "ikona.html" "telefon" }}
+        <span>{{ $s.telefon }}</span>
+      </a>
+    </div>
+  </div>
+</header>

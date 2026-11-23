@@ -1,0 +1,42 @@
+{{- /*
+  Siatka galerii prac z opcjonalnym filtrowaniem kategorii i obsługą lightboxa.
+  Parametry (dict): items, showFilters (bool), id (opcjonalny).
+*/ -}}
+{{- $items := .items -}}
+{{- $showFilters := .showFilters | default false -}}
+
+{{- if $showFilters }}
+<div class="gallery-filters" role="tablist" aria-label="Filtruj stylizacje według kategorii">
+  <button type="button" class="filter-chip is-active" data-filter="wszystkie" role="tab" aria-selected="true">Wszystkie <span>{{ len $items }}</span></button>
+  <button type="button" class="filter-chip" data-filter="french" role="tab" aria-selected="false">French</button>
+  <button type="button" class="filter-chip" data-filter="efekty" role="tab" aria-selected="false">Efekty i kolory</button>
+  <button type="button" class="filter-chip" data-filter="zdobienia" role="tab" aria-selected="false">Zdobienia</button>
+  <button type="button" class="filter-chip" data-filter="sezonowe" role="tab" aria-selected="false">Sezonowe</button>
+</div>
+{{- end }}
+
+<ul class="gallery-grid" data-gallery-grid>
+  {{- range $idx, $item := $items }}
+  {{- $full := resources.Get $item.zdjecie -}}
+  <li class="gallery-item reveal" data-category="{{ $item.kategoria }}">
+    <button
+      type="button"
+      class="gallery-item__btn"
+      data-lightbox-open
+      data-lightbox-src="{{ $full.RelPermalink }}"
+      data-lightbox-title="{{ $item.tytul }}"
+      data-lightbox-desc="{{ $item.opis }}"
+      data-lightbox-tag="{{ $item.etykieta }}"
+      aria-label="Powiększ zdjęcie: {{ $item.tytul }}">
+      <span class="gallery-item__media">
+        {{ partial "foto.html" (dict "src" $item.zdjecie "alt" $item.alt "class" "gallery-item__img" "sizes" "(max-width: 600px) 50vw, (max-width: 1024px) 33vw, 310px") }}
+        <span class="gallery-item__zoom" aria-hidden="true">{{ partial "ikona.html" "lupa" }}</span>
+      </span>
+      <span class="gallery-item__caption">
+        <span class="gallery-item__tag">{{ $item.etykieta }}</span>
+        <strong class="gallery-item__title">{{ $item.tytul }}</strong>
+      </span>
+    </button>
+  </li>
+  {{- end }}
+</ul>

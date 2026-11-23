@@ -1,0 +1,101 @@
+{{ partial "head.html" . }}
+{{ partial "nav.html" . }}
+{{- $s := hugo.Data.salon -}}
+<main id="tresc" tabindex="-1">
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Ścieżka nawigacji">
+        <a href="{{ "" | relURL }}">Strona główna</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ .Params.naglowek }}</span>
+      </nav>
+      <p class="eyebrow">{{ .Params.nadtytul }}</p>
+      <h1 class="page-hero__title">{{ .Params.naglowek }}</h1>
+      <p class="page-hero__lead">{{ .Params.lead }}</p>
+    </div>
+  </header>
+
+  <section class="section" aria-label="Dane kontaktowe i mapa dojazdu">
+    <div class="container contact-grid">
+      <div class="contact-card reveal">
+        <h2 class="contact-card__heading">Jak się z nami skontaktować</h2>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-list__icon">{{ partial "ikona.html" "telefon" }}</span>
+            <div>
+              <span class="contact-list__label">Telefon</span>
+              <strong><a href="tel:{{ $s.tel }}">{{ $s.telefon }}</a></strong>
+              <p class="contact-list__hint">Najszybszy sposób rezerwacji lub zmiany terminu. Jeśli nie możemy odebrać w trakcie stylizacji – oddzwonimy albo odpiszemy.</p>
+            </div>
+          </li>
+          <li>
+            <span class="contact-list__icon">{{ partial "ikona.html" "facebook" }}</span>
+            <div>
+              <span class="contact-list__label">Facebook / Messenger</span>
+              <strong><a href="{{ $s.facebook }}" target="_blank" rel="noopener noreferrer">EMnails salon stylizacji paznokci Lubsko</a></strong>
+              <p class="contact-list__hint">Napisz do nas wiadomość na Facebooku lub sprawdź bieżące posty z wolnymi terminami last minute.</p>
+            </div>
+          </li>
+          <li>
+            <span class="contact-list__icon">{{ partial "ikona.html" "pinezka" }}</span>
+            <div>
+              <span class="contact-list__label">Adres salonu</span>
+              <strong>{{ $s.ulica }}<br>{{ $s.kod }} {{ $s.miasto }}</strong>
+            </div>
+          </li>
+          <li>
+            <span class="contact-list__icon">{{ partial "ikona.html" "zegar" }}</span>
+            <div>
+              <span class="contact-list__label">Godziny wizyt</span>
+              {{- with $s.godziny }}
+                {{- range . }}
+                <strong>{{ .dzien }}: {{ .czas }}</strong><br>
+                {{- end }}
+              {{- else }}
+              <strong>Indywidualne zapisy na wybraną godzinę</strong>
+              <p class="contact-list__hint">Wszystkie wizyty odbywają się po wcześniejszym umówieniu telefonicznym lub przez Facebooka.</p>
+              {{- end }}
+            </div>
+          </li>
+        </ul>
+
+        <div class="contact-card__actions">
+          <a class="btn btn--primary" href="tel:{{ $s.tel }}">{{ partial "ikona.html" "telefon" }}Zadzwoń: {{ $s.telefon }}</a>
+          <a class="btn btn--ghost" href="{{ $s.facebook }}" target="_blank" rel="noopener noreferrer">{{ partial "ikona.html" "facebook" }}Przejdź na Facebooka</a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        {{ partial "mapa.html" . }}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand" aria-labelledby="faq-tytul">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Częste pytania</p>
+        <h2 class="section-title" id="faq-tytul">Warto wiedzieć przed pierwszą wizytą</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal" open>
+          <summary>Jak najlepiej umówić się na wizytę?</summary>
+          <p>Zadzwoń pod numer <a href="tel:{{ $s.tel }}">{{ $s.telefon }}</a> lub wyślij wiadomość na naszym <a href="{{ $s.facebook }}" target="_blank" rel="noopener noreferrer">profilu na Facebooku</a>. Napisz, jaka stylizacja Cię interesuje (np. manicure hybrydowy, french, zdobienia, stylizacja stóp) oraz które dni tygodnia pasują Ci najbardziej.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Czy publikujecie wolne terminy last minute?</summary>
+          <p>Tak! Gdy zwalnia się okienko na manicure hybrydowy lub stylizację stóp, na bieżąco informujemy o tym na naszym profilu Facebook – warto go obserwować.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Czy muszę mieć od razu wybrany kolor lub wzór?</summary>
+          <p>Nie musisz – możesz pokazać nam swoją inspirację albo zdecydować na miejscu. Z przyjemnością pomożemy dobrać kształt paznokci i odcień, w którym będziesz czuć się świetnie.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Gdzie dokładnie znajduje się salon?</summary>
+          <p>Salon EMnails mieści się w Lubsku przy <strong>{{ $s.ulica }} ({{ $s.kod }} {{ $s.miasto }})</strong>. Powyżej znajdziesz mapę z zaznaczonym budynkiem oraz bezpośredni link do wyznaczenia trasy w Google Maps.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+{{ partial "footer.html" . }}

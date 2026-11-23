@@ -1,0 +1,71 @@
+{{- $s := hugo.Data.salon -}}
+{{- $is404 := eq .Kind "404" -}}
+{{- $title := .Title -}}
+{{- if $is404 }}{{ $title = printf "Nie znaleziono strony – %s" .Site.Title }}{{ end -}}
+{{- $desc := or .Params.opis $s.pelnaNazwa -}}
+{{- if $is404 }}{{ $desc = "Nie znaleziono strony. Wróć na stronę główną salonu stylizacji paznokci EMnails w Lubsku." }}{{ end -}}
+{{- $ogImg := resources.Get "img/logo.jpg" -}}
+{{- $ogImage := $ogImg.Permalink -}}
+{{- $fontsCss := resources.Get "css/fonts.css" -}}
+{{- $mainCss := resources.Get "css/main.css" -}}
+{{- $style := slice $fontsCss $mainCss | resources.Concat "css/bundle.css" | minify | fingerprint -}}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0D444D">
+  <title>{{ $title }}</title>
+  <meta name="description" content="{{ $desc }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+  <link rel="icon" href="{{ "img/favicon.svg" | relURL }}" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "img/favicon-32.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="48x48" href="{{ "img/favicon-48.png" | relURL }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "img/apple-touch-icon.png" | relURL }}">
+  <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="32x32">
+  <meta property="og:title" content="{{ $title }}">
+  <meta property="og:description" content="{{ $desc }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:image" content="{{ $ogImage }}">
+  <meta property="og:image:width" content="{{ $ogImg.Width }}">
+  <meta property="og:image:height" content="{{ $ogImg.Height }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $title }}">
+  <meta name="twitter:description" content="{{ $desc }}">
+  <meta name="twitter:image" content="{{ $ogImage }}">
+  {{- $sameAs := slice $s.facebook -}}
+  {{- with $s.instagram }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+  {{- with $s.booksy }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+  {{- $ld := dict
+    "@context" "https://schema.org"
+    "@type" "NailSalon"
+    "name" $s.pelnaNazwa
+    "url" site.BaseURL
+    "telephone" $s.tel
+    "image" $ogImage
+    "sameAs" $sameAs
+    "areaServed" (dict "@type" "City" "name" $s.miasto)
+    "address" (dict
+      "@type" "PostalAddress"
+      "streetAddress" $s.ulica
+      "addressLocality" $s.miasto
+      "postalCode" $s.kod
+      "addressRegion" $s.wojewodztwo
+      "addressCountry" "PL"
+    )
+    "geo" (dict
+      "@type" "GeoCoordinates"
+      "latitude" $s.lat
+      "longitude" $s.lon
+    )
+  -}}
+  {{- with $s.email }}{{ $ld = merge $ld (dict "email" .) }}{{ end -}}
+  {{- with $s.openingHours }}{{ $ld = merge $ld (dict "openingHours" .) }}{{ end -}}
+  <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+</head>
+<body>
+<a class="skip-link" href="#tresc">Przejdź do treści</a>

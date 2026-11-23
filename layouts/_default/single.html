@@ -1,0 +1,25 @@
+{{ partial "head.html" . }}
+{{ partial "nav.html" . }}
+<main id="tresc" tabindex="-1">
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Ścieżka nawigacji">
+        <a href="{{ "" | relURL }}">Strona główna</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ or .Params.naglowek .Title }}</span>
+      </nav>
+      {{- with .Params.nadtytul }}<p class="eyebrow">{{ . }}</p>{{ end }}
+      <h1 class="page-hero__title">{{ or .Params.naglowek .Title }}</h1>
+      {{- with .Params.lead }}<p class="page-hero__lead">{{ . }}</p>{{ end }}
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      {{ .Content }}
+    </div>
+  </section>
+
+  {{ partial "cta-band.html" . }}
+</main>
+{{ partial "footer.html" . }}

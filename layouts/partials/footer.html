@@ -1,0 +1,97 @@
+{{- $s := hugo.Data.salon -}}
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <a class="brand brand--footer" href="{{ "" | relURL }}">
+        <span class="brand__mark" aria-hidden="true">
+          <img src="{{ "img/favicon.svg" | relURL }}" width="44" height="44" alt="">
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">{{ $s.nazwa }}</span>
+          <span class="brand__sub">{{ $s.podtytul }} · {{ $s.miasto }}</span>
+        </span>
+      </a>
+      <p class="site-footer__desc">Stylizacja paznokci w Lubsku od {{ $s.odRoku }} roku. Staranne wykonanie, profesjonalne produkty i ciepłe podejście do każdej klientki.</p>
+      <div class="site-footer__rating">
+        {{ partial "ikona.html" "gwiazdka" }}
+        <span><strong>{{ $s.ocenaProcent }} poleceń</strong> na Facebooku ({{ $s.liczbaOpinii }} opinii)</span>
+      </div>
+    </div>
+
+    <div class="site-footer__col">
+      <h2 class="site-footer__title">Kontakt i lokalizacja</h2>
+      <ul class="site-footer__contact">
+        <li>{{ partial "ikona.html" "pinezka" }}<span>{{ $s.ulica }}<br>{{ $s.kod }} {{ $s.miasto }}</span></li>
+        <li>{{ partial "ikona.html" "telefon" }}<a href="tel:{{ $s.tel }}">{{ $s.telefon }}</a></li>
+        {{- with $s.email }}
+        <li>{{ partial "ikona.html" "zewnetrzny" }}<a href="mailto:{{ . }}">{{ . }}</a></li>
+        {{- end }}
+        <li>{{ partial "ikona.html" "kalendarz" }}<span>Wizyty po wcześniejszym umówieniu</span></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__col">
+      <h2 class="site-footer__title">Na skróty</h2>
+      <ul class="site-footer__links">
+        <li><a href="{{ "" | relURL }}">Strona główna</a></li>
+        <li><a href="{{ "uslugi/" | relURL }}">Usługi i stylizacje</a></li>
+        <li><a href="{{ "galeria/" | relURL }}">Galeria prac</a></li>
+        <li><a href="{{ "o-salonie/" | relURL }}">O salonie</a></li>
+        <li><a href="{{ "kontakt/" | relURL }}">Kontakt i dojazd</a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__col">
+      <h2 class="site-footer__title">Obserwuj nas</h2>
+      <p class="site-footer__social-note">Najnowsze stylizacje, wolne terminy last minute i informacje o zapisach znajdziesz na naszym profilu Facebook.</p>
+      <a class="btn btn--outline-light btn--sm" href="{{ $s.facebook }}" target="_blank" rel="noopener noreferrer">
+        {{ partial "ikona.html" "facebook" }}Facebook EMnails
+      </a>
+    </div>
+  </div>
+
+  <div class="container site-footer__bottom">
+    <p>&copy; {{ now.Year }} {{ $s.pelnaNazwa }}</p>
+    <p class="site-footer__meta">
+      <a href="{{ "rodo/" | relURL }}">Polityka prywatności (RODO)</a>
+    </p>
+  </div>
+</footer>
+
+<div class="callbar" role="region" aria-label="Szybki kontakt">
+  <a class="callbar__btn callbar__btn--primary" href="tel:{{ $s.tel }}">
+    {{ partial "ikona.html" "telefon" }}
+    <span>Zadzwoń: {{ $s.telefon }}</span>
+  </a>
+  <a class="callbar__btn callbar__btn--fb" href="{{ $s.facebook }}" target="_blank" rel="noopener noreferrer">
+    {{ partial "ikona.html" "facebook" }}
+    <span>Facebook</span>
+  </a>
+</div>
+
+<dialog class="lightbox" id="gallery-lightbox" aria-label="Podgląd stylizacji paznokci">
+  <div class="lightbox__stage">
+    <button type="button" class="lightbox__close" data-lightbox-close aria-label="Zamknij podgląd">
+      {{ partial "ikona.html" "zamknij" }}
+    </button>
+    <button type="button" class="lightbox__nav lightbox__nav--prev" data-lightbox-prev aria-label="Poprzednie zdjęcie">
+      {{ partial "ikona.html" "lewo" }}
+    </button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" src="" alt="" data-lightbox-img>
+      <figcaption class="lightbox__caption">
+        <span class="lightbox__tag" data-lightbox-tag></span>
+        <strong class="lightbox__title" data-lightbox-title></strong>
+        <p class="lightbox__desc" data-lightbox-desc></p>
+        <span class="lightbox__counter" data-lightbox-counter></span>
+      </figcaption>
+    </figure>
+    <button type="button" class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="Następne zdjęcie">
+      {{ partial "ikona.html" "prawo" }}
+    </button>
+  </div>
+</dialog>
+
+<script src="{{ "js/main.js" | relURL }}" defer></script>
+</body>
+</html>

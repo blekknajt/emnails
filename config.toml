@@ -1,4 +1,4 @@
-baseURL = "https://emnails-lubsko.pl/"
+baseURL = "https://blekknajt.github.io/emnails/"
 locale = "pl-PL"
 title = "EMnails – Salon Stylizacji Paznokci Lubsko"
 disableKinds = ["taxonomy"]

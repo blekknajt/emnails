@@ -1,0 +1,113 @@
+{{ partial "head.html" . }}
+{{ partial "nav.html" . }}
+{{- $s := hugo.Data.salon -}}
+<main id="tresc" tabindex="-1">
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Ścieżka nawigacji">
+        <a href="{{ "" | relURL }}">Strona główna</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ .Params.naglowek }}</span>
+      </nav>
+      <p class="eyebrow">{{ .Params.nadtytul }}</p>
+      <h1 class="page-hero__title">{{ .Params.naglowek }}</h1>
+      <p class="page-hero__lead">{{ .Params.lead }}</p>
+    </div>
+  </header>
+
+  <section class="section" aria-label="Szczegółowa oferta usług">
+    <div class="container">
+      <ul class="service-detail-list">
+        {{- range hugo.Data.uslugi }}
+        <li class="service-detail reveal">
+          <div class="service-detail__media">
+            {{ partial "foto.html" (dict "src" .zdjecie "alt" .alt "class" "service-detail__img" "sizes" "(max-width: 820px) calc(100vw - 32px), 420px") }}
+          </div>
+          <div class="service-detail__body">
+            <p class="eyebrow">{{ .kategoria }}</p>
+            <h2 class="service-detail__title">{{ .nazwa }}</h2>
+            <p class="service-detail__desc">{{ .opis }}</p>
+            {{- with .szczegoly }}
+            <ul class="check-list">
+              {{- range . }}<li>{{ partial "ikona.html" "ok" }}<span>{{ . }}</span></li>{{- end }}
+            </ul>
+            {{- end }}
+          </div>
+        </li>
+        {{- end }}
+      </ul>
+    </div>
+  </section>
+
+  {{- if site.Params.pokazCennik }}
+  <section class="section section--sand" id="cennik" aria-labelledby="cennik-tytul">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Cennik</p>
+        <h2 class="section-title" id="cennik-tytul">Orientacyjny cennik usług</h2>
+        <p class="section-lead">Ostateczna cena stylizacji z rozbudowanymi zdobieniami ustalana jest indywidualnie przed zabiegiem.</p>
+      </div>
+      <div class="price-groups">
+        {{- range hugo.Data.cennik }}
+        <div class="price-group reveal">
+          <h3 class="price-group__title">{{ .kategoria }}</h3>
+          <dl class="price-list">
+            {{- range .pozycje }}
+            <div class="price-list__row">
+              <dt>{{ .nazwa }}</dt>
+              <dd>{{ .cena }}</dd>
+            </div>
+            {{- end }}
+          </dl>
+        </div>
+        {{- end }}
+      </div>
+    </div>
+  </section>
+  {{- else }}
+  <section class="section section--sand" id="cennik" aria-labelledby="wycena-tytul">
+    <div class="container">
+      <div class="info-panel reveal">
+        <div class="info-panel__content">
+          <p class="eyebrow">Wycena i dobór stylizacji</p>
+          <h2 class="section-title" id="wycena-tytul">Indywidualne podejście do każdej stylizacji</h2>
+          <p>Zakres usługi, długość paznokci i rodzaj zdobień dobieramy zawsze do Twoich potrzeb. Zadzwoń lub napisz wiadomość na Facebooku – podamy orientacyjny czas i koszt wybranej stylizacji oraz sprawdzimy najbliższe wolne terminy.</p>
+          <div class="info-panel__actions">
+            <a class="btn btn--primary" href="tel:{{ $s.tel }}">{{ partial "ikona.html" "telefon" }}Zadzwoń: {{ $s.telefon }}</a>
+            <a class="btn btn--ghost" href="{{ $s.facebook }}" target="_blank" rel="noopener noreferrer">{{ partial "ikona.html" "facebook" }}Zapytaj na Facebooku</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{- end }}
+
+  <section class="section" aria-labelledby="wizyta-tytul">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Przed wizytą</p>
+        <h2 class="section-title" id="wizyta-tytul">Jak przygotować się na wizytę</h2>
+      </div>
+      <ul class="steps-grid">
+        <li class="step-card reveal">
+          <span class="step-card__num">01</span>
+          <h3>Zarezerwuj termin</h3>
+          <p>Zadzwoń pod numer <a href="tel:{{ $s.tel }}">{{ $s.telefon }}</a> lub napisz na Facebooku. Jeśli masz na paznokciach poprzednią stylizację lub planujesz zdobienia ręczne – daj znać, abyśmy zarezerwowały odpowiedni czas.</p>
+        </li>
+        <li class="step-card reveal">
+          <span class="step-card__num">02</span>
+          <h3>Inspiracja lub doradztwo na miejscu</h3>
+          <p>Możesz przynieść zdjęcie wymarzonej stylizacji albo zdać się na nasze doświadczenie – wspólnie dobierzemy odcień i kształt pasujący do Twoich dłoni.</p>
+        </li>
+        <li class="step-card reveal">
+          <span class="step-card__num">03</span>
+          <h3>Zapisy z wyprzedzeniem i last minute</h3>
+          <p>Popularne terminy przed świętami i w sezonie letnim warto rezerwować wcześniej. Pojedyncze zwalniające się okienka regularnie wrzucamy na nasz profil na Facebooku.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  {{ partial "cta-band.html" . }}
+</main>
+{{ partial "footer.html" . }}

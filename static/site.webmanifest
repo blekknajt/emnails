@@ -2,19 +2,19 @@
   "name": "EMnails – Salon Stylizacji Paznokci Lubsko",
   "short_name": "EMnails",
   "description": "Salon stylizacji paznokci w Lubsku – manicure hybrydowy, french, cat eye, zdobienia ręczne i pedicure.",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#FAF7F2",
   "theme_color": "#0D444D",
   "lang": "pl",
   "icons": [
     {
-      "src": "/img/icon-192.png",
+      "src": "img/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/img/icon-512.png",
+      "src": "img/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

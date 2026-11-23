@@ -1,0 +1,257 @@
+{{ partial "head.html" . }}
+{{ partial "nav.html" . }}
+{{- $s := hugo.Data.salon -}}
+{{- $h := .Params.hero -}}
+{{- $wyroznione := where hugo.Data.galeria "wyroznione" true -}}
+<main id="tresc" tabindex="-1">
+
+<section class="hero" aria-labelledby="hero-tytul">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">{{ $h.nadtytul }}</p>
+      <h1 class="hero__title" id="hero-tytul">{{ $h.tytul | safeHTML }}</h1>
+      <p class="hero__lead">{{ $h.wstep }}</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="tel:{{ $s.tel }}">{{ partial "ikona.html" "telefon" }}Umów wizytę: {{ $s.telefon }}</a>
+        <a class="btn btn--ghost" href="{{ "galeria/" | relURL }}">Zobacz galerię prac {{ partial "ikona.html" "strzalka" }}</a>
+      </div>
+      <ul class="hero__trust" aria-label="Atuty salonu">
+        <li>{{ partial "ikona.html" "gwiazdka" }}<span><strong>{{ $s.ocenaProcent }} poleceń</strong> ({{ $s.liczbaOpinii }} opinii)</span></li>
+        <li>{{ partial "ikona.html" "pinezka" }}<span>{{ $s.ulica }}, {{ $s.miasto }}</span></li>
+        <li>{{ partial "ikona.html" "iskra" }}<span>Działamy od {{ $s.odRoku }} r.</span></li>
+      </ul>
+    </div>
+
+    <div class="hero__visual">
+      <div class="hero__diamond" aria-hidden="true"></div>
+      <div class="hero__photo-main">
+        {{ partial "foto.html" (dict "src" "img/french-kwadrat.jpg" "alt" "Klasyczny biały french manicure na pudroworóżowej bazie – stylizacja wykonana w salonie EMnails w Lubsku" "class" "hero__img" "sizes" "(max-width: 900px) calc(100vw - 32px), 520px" "priority" true) }}
+      </div>
+      <div class="hero__photo-accent">
+        {{ partial "foto.html" (dict "src" "img/jesienne-cat-eye.jpg" "alt" "Stylizacja paznokci z magnetycznym efektem cat eye w salonie EMnails" "class" "hero__accent-img" "sizes" "(max-width: 900px) 160px, 210px" "eager" true) }}
+      </div>
+      <a class="hero__emblem" href="{{ "o-salonie/" | relURL }}" aria-label="Poznaj salon EMnails">
+        {{ partial "foto.html" (dict "src" "img/logo.jpg" "alt" "Logo salonu EMnails na tle turkusowych piór ze złotym diamentem" "class" "hero__emblem-img" "sizes" "110px" "eager" true) }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="ribbon" aria-label="Najważniejsze informacje o salonie">
+  <div class="container">
+    <ul class="ribbon__list">
+      <li class="ribbon__item">
+        <strong class="ribbon__value">{{ $s.ocenaProcent }}</strong>
+        <span class="ribbon__label">poleceń klientek ({{ $s.liczbaOpinii }} opinii na FB)</span>
+      </li>
+      <li class="ribbon__item">
+        <strong class="ribbon__value">od {{ $s.odRoku }}</strong>
+        <span class="ribbon__label">stylizujemy paznokcie w Lubsku</span>
+      </li>
+      <li class="ribbon__item">
+        <strong class="ribbon__value">{{ $s.obserwujacy }}</strong>
+        <span class="ribbon__label">obserwujących naszą społeczność</span>
+      </li>
+      <li class="ribbon__item">
+        <strong class="ribbon__value">Warszawska 12</strong>
+        <span class="ribbon__label">dogodna lokalizacja w Lubsku</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="uslugi" aria-labelledby="uslugi-tytul">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Oferta</p>
+      <h2 class="section-title" id="uslugi-tytul">Co wykonujemy w&nbsp;salonie</h2>
+      <p class="section-lead">Łączymy estetyczną, trwałą stylizację z dbałością o kondycję płytki i indywidualnym doborem kolorów.</p>
+    </div>
+
+    <ul class="service-cards">
+      {{- range hugo.Data.uslugi }}
+      <li class="service-card reveal">
+        <div class="service-card__media">
+          {{ partial "foto.html" (dict "src" .zdjecie "alt" .alt "class" "service-card__img" "sizes" "(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) 50vw, 380px") }}
+          <span class="service-card__badge">{{ .kategoria }}</span>
+        </div>
+        <div class="service-card__body">
+          <h3 class="service-card__title">{{ .nazwa }}</h3>
+          <p class="service-card__desc">{{ .opis }}</p>
+        </div>
+      </li>
+      {{- end }}
+    </ul>
+
+    <div class="pricing-note reveal">
+      <div class="pricing-note__text">
+        <strong>Zastanawiasz się nad doborem stylizacji lub kosztem wizyty?</strong>
+        <p>Zakres zabiegu, czas i wycenę zdobień ustalamy indywidualnie przy zapisie – zadzwoń lub napisz wiadomość na Facebooku, chętnie doradzimy.</p>
+      </div>
+      <div class="pricing-note__actions">
+        <a class="btn btn--primary" href="{{ "uslugi/" | relURL }}">Szczegóły usług {{ partial "ikona.html" "strzalka" }}</a>
+        <a class="btn btn--ghost" href="tel:{{ $s.tel }}">{{ partial "ikona.html" "telefon" }}{{ $s.telefon }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand" id="galeria" aria-labelledby="galeria-tytul">
+  <div class="container">
+    <div class="section-head section-head--row">
+      <div>
+        <p class="eyebrow">Portfolio</p>
+        <h2 class="section-title" id="galeria-tytul">Wybrane stylizacje</h2>
+        <p class="section-lead">Prawdziwe realizacje z naszego salonu – kliknij zdjęcie, aby zobaczyć je z bliska.</p>
+      </div>
+      <a class="btn btn--ghost" href="{{ "galeria/" | relURL }}">Pełna galeria ({{ len hugo.Data.galeria }} prac) {{ partial "ikona.html" "strzalka" }}</a>
+    </div>
+
+    {{ partial "galeria-grid.html" (dict "items" $wyroznione "showFilters" false) }}
+  </div>
+</section>
+
+<section class="section" id="o-salonie" aria-labelledby="onas-tytul">
+  <div class="container about-split">
+    <div class="about-split__media reveal">
+      <div class="about-split__main">
+        {{ partial "foto.html" (dict "src" "img/szalwia-migdal.jpg" "alt" "Szałwiowy manicure w kształcie migdała – stylizacja wykonana w EMnails Lubsko" "class" "about-split__img" "sizes" "(max-width: 900px) calc(100vw - 32px), 520px") }}
+      </div>
+      <div class="about-split__badge">
+        <span class="about-split__badge-num">od {{ $s.odRoku }}</span>
+        <span class="about-split__badge-txt">zaufanie klientek<br>z Lubska i okolic</span>
+      </div>
+    </div>
+
+    <div class="about-split__copy reveal">
+      <p class="eyebrow">O salonie</p>
+      <h2 class="section-title" id="onas-tytul">Miejsce, do którego chce się wracać</h2>
+      <div class="about-split__prose">
+        {{ .Content }}
+      </div>
+      <ul class="values-list">
+        <li>
+          <span class="values-list__icon">{{ partial "ikona.html" "diament" }}</span>
+          <div>
+            <strong>Dbałość o detal i kształt</strong>
+            <p>Każdy manicure – od naturalnej krótkiej płytki po smukły migdał i geometryczny kwadrat – wykonujemy z równą starannością.</p>
+          </div>
+        </li>
+        <li>
+          <span class="values-list__icon">{{ partial "ikona.html" "serce" }}</span>
+          <div>
+            <strong>Ciepła, swobodna atmosfera</strong>
+            <p>Wizyta w salonie to chwila tylko dla Ciebie – bez pośpiechu, przy dobrej rozmowie i życzliwym doradztwie.</p>
+          </div>
+        </li>
+        <li>
+          <span class="values-list__icon">{{ partial "ikona.html" "tarcza" }}</span>
+          <div>
+            <strong>Profesjonalne produkty i higiena</strong>
+            <p>Pracujemy na sprawdzonych, trwałych materiałach, dbając o bezpieczeństwo oraz komfort podczas każdej wizyty.</p>
+          </div>
+        </li>
+      </ul>
+      <a class="link-arrow" href="{{ "o-salonie/" | relURL }}">Poznaj bliżej EMnails {{ partial "ikona.html" "strzalka" }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand" id="opinie" aria-labelledby="opinie-tytul">
+  <div class="container">
+    <div class="section-head section-head--row">
+      <div>
+        <p class="eyebrow">Opinie klientek</p>
+        <h2 class="section-title" id="opinie-tytul">{{ $s.ocenaProcent }} poleceń na Facebooku</h2>
+        <p class="section-lead">Najlepszą wizytówką naszej pracy są słowa klientek, które regularnie odwiedzają EMnails.</p>
+      </div>
+      <a class="btn btn--ghost" href="{{ $s.facebookOpinie }}" target="_blank" rel="noopener noreferrer">{{ partial "ikona.html" "facebook" }}Wszystkie opinie ({{ $s.liczbaOpinii }})</a>
+    </div>
+
+    <ul class="reviews-grid">
+      {{- range hugo.Data.opinie }}
+      <li class="review-card reveal">
+        <div class="review-card__stars" aria-label="Poleca salon">
+          {{ partial "ikona.html" "gwiazdka" }}{{ partial "ikona.html" "gwiazdka" }}{{ partial "ikona.html" "gwiazdka" }}{{ partial "ikona.html" "gwiazdka" }}{{ partial "ikona.html" "gwiazdka" }}
+        </div>
+        <blockquote class="review-card__quote">„{{ .tresc }}”</blockquote>
+        {{- with .tagi }}
+        <ul class="review-card__tags" aria-label="Wyróżnione cechy">
+          {{- range . }}<li>{{ . }}</li>{{- end }}
+        </ul>
+        {{- end }}
+        <footer class="review-card__footer">
+          <strong>{{ .autorka }}</strong>
+          <span>{{ .data }} · Facebook</span>
+        </footer>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="kontakt" aria-labelledby="kontakt-tytul">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Lokalizacja i zapisy</p>
+      <h2 class="section-title" id="kontakt-tytul">Odwiedź nas w&nbsp;Lubsku</h2>
+      <p class="section-lead">Salon znajduje się przy ul.&nbsp;Warszawskiej&nbsp;12. Terminy ustalamy bezpośrednio telefonicznie lub na Facebooku.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <h3 class="contact-card__heading">Dane salonu</h3>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-list__icon">{{ partial "ikona.html" "pinezka" }}</span>
+            <div>
+              <span class="contact-list__label">Adres</span>
+              <strong>{{ $s.ulica }}, {{ $s.kod }} {{ $s.miasto }}</strong>
+            </div>
+          </li>
+          <li>
+            <span class="contact-list__icon">{{ partial "ikona.html" "telefon" }}</span>
+            <div>
+              <span class="contact-list__label">Telefon / zapisy</span>
+              <strong><a href="tel:{{ $s.tel }}">{{ $s.telefon }}</a></strong>
+            </div>
+          </li>
+          <li>
+            <span class="contact-list__icon">{{ partial "ikona.html" "kalendarz" }}</span>
+            <div>
+              <span class="contact-list__label">Godziny i terminy</span>
+              {{- with $s.godziny }}
+                {{- range . }}
+                <strong>{{ .dzien }}: {{ .czas }}</strong><br>
+                {{- end }}
+              {{- else }}
+              <strong>Wizyty po wcześniejszym umówieniu</strong>
+              <p class="contact-list__hint">Zadzwoń lub napisz na Facebooku – dopasujemy dogodną porę. Wolne terminy last minute publikujemy też w postach na FB.</p>
+              {{- end }}
+            </div>
+          </li>
+          <li>
+            <span class="contact-list__icon">{{ partial "ikona.html" "facebook" }}</span>
+            <div>
+              <span class="contact-list__label">Media społecznościowe</span>
+              <strong><a href="{{ $s.facebook }}" target="_blank" rel="noopener noreferrer">EMnails salon stylizacji paznokci Lubsko</a></strong>
+            </div>
+          </li>
+        </ul>
+        <div class="contact-card__actions">
+          <a class="btn btn--primary" href="tel:{{ $s.tel }}">{{ partial "ikona.html" "telefon" }}Zadzwoń teraz</a>
+          <a class="btn btn--ghost" href="{{ "kontakt/" | relURL }}">Więcej o zapisach</a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        {{ partial "mapa.html" . }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ partial "cta-band.html" . }}
+
+</main>
+{{ partial "footer.html" . }}

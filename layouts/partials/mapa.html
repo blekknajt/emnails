@@ -1,0 +1,22 @@
+{{- $s := hugo.Data.salon -}}
+{{- $minLon := sub $s.lon 0.0018 -}}
+{{- $minLat := sub $s.lat 0.0009 -}}
+{{- $maxLon := add $s.lon 0.0018 -}}
+{{- $maxLat := add $s.lat 0.0009 -}}
+<div class="map-card">
+  <div class="map-card__frame">
+    <iframe
+      title="Mapa dojazdu – {{ $s.pelnaNazwa }}, {{ $s.ulica }}, {{ $s.miasto }}"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      src="https://www.openstreetmap.org/export/embed.html?bbox={{ $minLon }}%2C{{ $minLat }}%2C{{ $maxLon }}%2C{{ $maxLat }}&amp;layer=mapnik&amp;marker={{ $s.lat }}%2C{{ $s.lon }}">
+    </iframe>
+  </div>
+  <div class="map-card__bar">
+    <span class="map-card__addr">{{ partial "ikona.html" "pinezka" }}{{ $s.ulica }}, {{ $s.kod }} {{ $s.miasto }}</span>
+    <div class="map-card__links">
+      <a class="link-inline" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ $s.lat }},{{ $s.lon }}" target="_blank" rel="noopener noreferrer">Wyznacz trasę (Google Maps) {{ partial "ikona.html" "zewnetrzny" }}</a>
+      <a class="link-inline" href="https://www.openstreetmap.org/?mlat={{ $s.lat }}&amp;mlon={{ $s.lon }}#map=18/{{ $s.lat }}/{{ $s.lon }}" target="_blank" rel="noopener noreferrer">Większa mapa (OSM)</a>
+    </div>
+  </div>
+</div>

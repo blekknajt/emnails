@@ -1,0 +1,31 @@
+{{ partial "head.html" . }}
+{{ partial "nav.html" . }}
+{{- $s := hugo.Data.salon -}}
+<main id="tresc" tabindex="-1">
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Ścieżka nawigacji">
+        <a href="{{ "" | relURL }}">Strona główna</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ .Params.naglowek }}</span>
+      </nav>
+      <p class="eyebrow">{{ .Params.nadtytul }}</p>
+      <h1 class="page-hero__title">{{ .Params.naglowek }}</h1>
+      <p class="page-hero__lead">{{ .Params.lead }}</p>
+    </div>
+  </header>
+
+  <section class="section" aria-label="Portfolio stylizacji paznokci">
+    <div class="container">
+      {{ partial "galeria-grid.html" (dict "items" hugo.Data.galeria "showFilters" true) }}
+
+      <div class="gallery-more reveal">
+        <p>Chcesz zobaczyć jeszcze więcej bieżących prac i nowości sezonowych? Regularnie dodajemy świeże stylizacje na naszym Facebooku.</p>
+        <a class="btn btn--ghost" href="{{ $s.facebook }}" target="_blank" rel="noopener noreferrer">{{ partial "ikona.html" "facebook" }}Zobacz więcej na Facebooku</a>
+      </div>
+    </div>
+  </section>
+
+  {{ partial "cta-band.html" . }}
+</main>
+{{ partial "footer.html" . }}

@@ -1,0 +1,14 @@
+{{- $s := hugo.Data.salon -}}
+<section class="cta-band" aria-labelledby="cta-tytul">
+  <div class="container cta-band__inner reveal">
+    <div class="cta-band__copy">
+      <p class="eyebrow eyebrow--gold">Zapisy i wolne terminy</p>
+      <h2 class="cta-band__title" id="cta-tytul">Umów swoją wizytę w&nbsp;EMnails</h2>
+      <p class="cta-band__lead">{{ $s.zapisyOpis }} {{ $s.zapisyDodatek }}</p>
+    </div>
+    <div class="cta-band__actions">
+      <a class="btn btn--gold" href="tel:{{ $s.tel }}">{{ partial "ikona.html" "telefon" }}Zadzwoń: {{ $s.telefon }}</a>
+      <a class="btn btn--outline-light" href="{{ $s.facebook }}" target="_blank" rel="noopener noreferrer">{{ partial "ikona.html" "facebook" }}Napisz na Facebooku</a>
+    </div>
+  </div>
+</section>

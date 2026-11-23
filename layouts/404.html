@@ -1,0 +1,16 @@
+{{ partial "head.html" . }}
+{{ partial "nav.html" . }}
+<main id="tresc" tabindex="-1">
+  <section class="section not-found">
+    <div class="container not-found__inner">
+      <p class="eyebrow">Błąd 404</p>
+      <h1 class="section-title">Nie znaleziono strony</h1>
+      <p class="section-lead">Strona, której szukasz, mogła zostać przeniesiona lub adres zawiera literówkę. Wróć na stronę główną albo przejrzyj galerię naszych stylizacji.</p>
+      <div class="not-found__actions">
+        <a class="btn btn--primary" href="{{ "" | relURL }}">Strona główna</a>
+        <a class="btn btn--ghost" href="{{ "galeria/" | relURL }}">Galeria prac</a>
+      </div>
+    </div>
+  </section>
+</main>
+{{ partial "footer.html" . }}

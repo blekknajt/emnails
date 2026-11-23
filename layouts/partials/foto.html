@@ -1,0 +1,25 @@
+{{- /*
+  Responsywne zdjęcie: AVIF i WebP w kilku szerokościach, oryginalny JPG jako fallback.
+  Parametry (dict): src, alt, class, sizes, priority, eager.
+*/ -}}
+{{- $img := resources.Get .src -}}
+{{- if not $img }}{{ errorf "foto: brak pliku assets/%s" .src }}{{ end -}}
+{{- $sizes := .sizes | default "(max-width: 640px) calc(100vw - 32px), 480px" -}}
+{{- $widths := slice -}}
+{{- range slice 420 820 }}{{ if lt . $img.Width }}{{ $widths = $widths | append . }}{{ end }}{{ end -}}
+{{- $widths = $widths | append $img.Width -}}
+<picture>
+{{- range $fmt := slice "avif" "webp" }}
+  {{- $opts := cond (eq $fmt "webp") "webp q82" "avif q68" -}}
+  {{- $set := slice -}}
+  {{- range $widths }}
+    {{- $r := $img.Process (printf "resize %dx %s" . $opts) -}}
+    {{- $set = $set | append (printf "%s %dw" $r.RelPermalink .) -}}
+  {{- end }}
+  <source type="image/{{ $fmt }}" srcset="{{ delimit $set ", " }}" sizes="{{ $sizes }}">
+{{- end }}
+  <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ .alt }}"
+    {{- with .class }} class="{{ . }}"{{ end }}
+    {{- if .priority }} fetchpriority="high" decoding="async"{{ else if .eager }} decoding="async"{{ else }} loading="lazy" decoding="async"{{ end }}>
+</picture>
+{{- /**/ -}}

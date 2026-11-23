@@ -1,0 +1,97 @@
+{{ partial "head.html" . }}
+{{ partial "nav.html" . }}
+{{- $s := hugo.Data.salon -}}
+<main id="tresc" tabindex="-1">
+  <header class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Ścieżka nawigacji">
+        <a href="{{ "" | relURL }}">Strona główna</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ .Params.naglowek }}</span>
+      </nav>
+      <p class="eyebrow">{{ .Params.nadtytul }}</p>
+      <h1 class="page-hero__title">{{ .Params.naglowek }}</h1>
+      <p class="page-hero__lead">{{ .Params.lead }}</p>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="historia-tytul">
+    <div class="container about-split">
+      <div class="about-split__media reveal">
+        <div class="about-split__main about-split__main--square">
+          {{ partial "foto.html" (dict "src" "img/logo.jpg" "alt" "Oficjalne logo EMnails Salon Stylizacji Paznokci – złoty geometryczny diament na tle turkusowych piór" "class" "about-split__img" "sizes" "(max-width: 900px) calc(100vw - 32px), 500px" "priority" true) }}
+        </div>
+      </div>
+
+      <div class="about-split__copy reveal">
+        <p class="eyebrow">Nasza filozofia</p>
+        <h2 class="section-title" id="historia-tytul">Precyzja, styl i serdeczna atmosfera</h2>
+        <div class="about-split__prose">
+          <p><strong>EMnails</strong> powstało w Lubsku w {{ $s.odRoku }} roku z pasji do pięknych, zadbanych dłoni. Od początku stawiamy na jakość wykonania, sprawdzone produkty oraz spokojny, kameralny klimat, w którym każda klientka może na chwilę zwolnić.</p>
+          <p>Uwielbiamy zarówno ponadczasową klasykę – czysty french, delikatny mleczny róż i naturalne odcienie nude – jak i odważniejsze sezonowe inspiracje: magnetyczne cat eye, lustrzaną czerwień chrome, letnie ombre czy ręcznie malowane zdobienia.</p>
+          <p>Największą satysfakcją jest dla nas zaufanie stałych klientek z Lubska i okolic oraz <strong>{{ $s.ocenaProcent }} pozytywnych rekomendacji</strong> na Facebooku.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand" aria-labelledby="dlaczego-tytul">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Dlaczego EMnails</p>
+        <h2 class="section-title" id="dlaczego-tytul">Co najbardziej doceniają nasze klientki</h2>
+      </div>
+      <ul class="steps-grid">
+        <li class="step-card reveal">
+          <span class="step-card__icon">{{ partial "ikona.html" "diament" }}</span>
+          <h3>Staranne wykończenie</h3>
+          <p>Zwracamy uwagę na czystą linię skórek, równy kształt każdego paznokcia i gładki, trwały połysk, który świetnie wygląda przez wiele tygodni.</p>
+        </li>
+        <li class="step-card reveal">
+          <span class="step-card__icon">{{ partial "ikona.html" "iskra" }}</span>
+          <h3>Trafny dobór koloru</h3>
+          <p>Nie wiesz, na jaki odcień się zdecydować? Chętnie podpowiemy kolor dopasowany do pory roku, okazji i Twojego charakteru.</p>
+        </li>
+        <li class="step-card reveal">
+          <span class="step-card__icon">{{ partial "ikona.html" "serce" }}</span>
+          <h3>Przyjazna atmosfera</h3>
+          <p>Bez sztywnego dystansu i bez pośpiechu – u nas czujesz się swobodnie, a z salonu wychodzisz z uśmiechem i zadbanymi dłońmi.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="opinie-podstrona">
+    <div class="container">
+      <div class="section-head section-head--row">
+        <div>
+          <p class="eyebrow">Głos klientek</p>
+          <h2 class="section-title" id="opinie-podstrona">Opinie z Facebooka</h2>
+        </div>
+        <a class="btn btn--ghost" href="{{ $s.facebookOpinie }}" target="_blank" rel="noopener noreferrer">{{ partial "ikona.html" "facebook" }}Zobacz wszystkie ({{ $s.liczbaOpinii }})</a>
+      </div>
+      <ul class="reviews-grid">
+        {{- range hugo.Data.opinie }}
+        <li class="review-card reveal">
+          <div class="review-card__stars" aria-label="Poleca salon">
+            {{ partial "ikona.html" "gwiazdka" }}{{ partial "ikona.html" "gwiazdka" }}{{ partial "ikona.html" "gwiazdka" }}{{ partial "ikona.html" "gwiazdka" }}{{ partial "ikona.html" "gwiazdka" }}
+          </div>
+          <blockquote class="review-card__quote">„{{ .tresc }}”</blockquote>
+          {{- with .tagi }}
+          <ul class="review-card__tags">
+            {{- range . }}<li>{{ . }}</li>{{- end }}
+          </ul>
+          {{- end }}
+          <footer class="review-card__footer">
+            <strong>{{ .autorka }}</strong>
+            <span>{{ .data }} · Facebook</span>
+          </footer>
+        </li>
+        {{- end }}
+      </ul>
+    </div>
+  </section>
+
+  {{ partial "cta-band.html" . }}
+</main>
+{{ partial "footer.html" . }}
