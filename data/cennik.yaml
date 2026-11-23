@@ -1,0 +1,31 @@
+# Szablon cennika gotowy do uzupełnienia przez właścicielkę salonu.
+# Aby wyświetlić cennik na stronie /uslugi/:
+# 1. Wpisz aktualne ceny poniżej.
+# 2. W pliku config.toml zmień: pokazCennik = true
+
+- kategoria: "Manicure"
+  pozycje:
+    - nazwa: "Manicure hybrydowy (jeden kolor)"
+      cena: "— zł"
+    - nazwa: "Manicure hybrydowy ze wzmocnieniem / bazą budującą"
+      cena: "— zł"
+    - nazwa: "Uzupełnienie / stylizacja żelowa"
+      cena: "— zł"
+    - nazwa: "Zdjęcie stylizacji + opracowanie paznokci"
+      cena: "— zł"
+
+- kategoria: "Pedicure i stylizacja stóp"
+  pozycje:
+    - nazwa: "Pedicure hybrydowy (opracowanie paznokci + kolor)"
+      cena: "— zł"
+    - nazwa: "Pedicure kompleksowy z hybrydą"
+      cena: "— zł"
+
+- kategoria: "Zdobienia i efekty"
+  pozycje:
+    - nazwa: "French / babyboomer / ombre"
+      cena: "— zł"
+    - nazwa: "Cat eye / efekt lustra (chrome)"
+      cena: "— zł"
+    - nazwa: "Zdobienia ręczne (wycena zależna od wzoru)"
+      cena: "— zł"

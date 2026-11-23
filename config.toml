@@ -1,0 +1,17 @@
+baseURL = "https://emnails-lubsko.pl/"
+locale = "pl-PL"
+title = "EMnails – Salon Stylizacji Paznokci Lubsko"
+disableKinds = ["taxonomy"]
+enableRobotsTXT = true
+
+[params]
+# Ustaw true, gdy uzupełnisz ceny w pliku data/cennik.yaml
+pokazCennik = false
+# Ustaw true, aby wyświetlić pasek z aktualnym komunikatem (np. o urlopie lub zapisach) z data/salon.yaml
+pokazKomunikat = false
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[security]
+allowContent = ['^text/html$']

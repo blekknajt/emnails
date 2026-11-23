@@ -1,0 +1,53 @@
+# Główne dane salonu EMnails.
+# Zmiana danych w tym pliku automatycznie aktualizuje nagłówek, stopkę, stronę kontaktu,
+# podstronę RODO oraz dane strukturalne (Schema.org) dla Google.
+
+nazwa: "EMnails"
+pelnaNazwa: "EMnails – Salon Stylizacji Paznokci Lubsko"
+podtytul: "Salon stylizacji paznokci"
+wlascicielka: "Emilia Banaszek"
+odRoku: 2020
+
+ulica: "ul. Warszawska 12"
+kod: "68-300"
+miasto: "Lubsko"
+wojewodztwo: "lubuskie"
+
+telefon: "726 525 894"
+tel: "+48726525894"
+
+# Opcjonalne pola – odkomentuj i uzupełnij, gdy będziesz gotowa dodać je na stronę:
+# email: "kontakt@emnails-lubsko.pl"
+# instagram: "https://www.instagram.com/..."
+# booksy: "https://booksy.com/..."
+# godziny:
+#   - dzien: "Poniedziałek – Piątek"
+#     czas: "9:00 – 18:00"
+#   - dzien: "Sobota"
+#     czas: "9:00 – 14:00"
+# openingHours: "Mo-Fr 09:00-18:00, Sa 09:00-14:00"
+
+zapisyOpis: "Wizyty umawiamy indywidualnie – telefonicznie lub w wiadomości na Facebooku."
+zapisyDodatek: "Informacje o wolnych terminach last minute oraz bieżących zapisach publikujemy także na naszym profilu na Facebooku."
+
+facebook: "https://www.facebook.com/people/EMnails-salon-stylizacji-paznokci-Lubsko/100027918293544/"
+facebookOpinie: "https://www.facebook.com/people/EMnails-salon-stylizacji-paznokci-Lubsko/100027918293544/?sk=reviews"
+
+ocenaProcent: "100%"
+liczbaOpinii: 16
+obserwujacy: "830+"
+
+# Współrzędne budynku ul. Warszawska 12, Lubsko (OpenStreetMap)
+lat: 51.79268
+lon: 14.97570
+
+# Dane rejestrowe (używane na stronie RODO / Polityka prywatności)
+firma: "EMnails Emilia Banaszek"
+nip: "9282059172"
+regon: "387654960"
+
+# Opcjonalny komunikat u góry strony (włącz w config.toml: pokazKomunikat = true)
+komunikat:
+  tekst: "Trwają zapisy na kolejne miesiące – zadzwoń lub napisz na Facebooku, aby zarezerwować dogodny termin."
+  etykietaLinku: "Umów wizytę"
+  link: "/kontakt/"

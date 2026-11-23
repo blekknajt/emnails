@@ -1,0 +1,115 @@
+# Galeria prawdziwych prac salonu EMnails (pobranych z profilu na Facebooku).
+# Kategorie filtrowania: french, efekty, zdobienia, sezonowe.
+# wyroznione: true – zdjęcie pojawia się również w skróconej galerii na stronie głównej.
+
+- tytul: "Klasyczny french na kwadracie"
+  kategoria: "french"
+  etykieta: "French"
+  opis: "Pudroworóżowa baza i czysta, precyzyjna biała końcówka w kształcie kwadratu."
+  zdjecie: "img/french-kwadrat.jpg"
+  alt: "Klasyczny biały french manicure na pudroworóżowej bazie i paznokciach w kształcie kwadratu"
+  wyroznione: true
+
+- tytul: "Jesienne cat eye"
+  kategoria: "efekty"
+  etykieta: "Efekty i kolory"
+  opis: "Ciepły, magnetyczny blask bursztynu i brązu w kształcie migdała – hit jesiennych stylizacji."
+  zdjecie: "img/jesienne-cat-eye.jpg"
+  alt: "Bursztynowo-brązowe paznokcie w kształcie migdała z magnetycznym efektem cat eye na tle jesiennego liścia"
+  wyroznione: true
+
+- tytul: "Szałwiowy migdał"
+  kategoria: "efekty"
+  etykieta: "Efekty i kolory"
+  opis: "Stonowana, szlachetna zieleń szałwii o idealnym połysku – rzadziej wybierany, a niezwykle elegancki kolor."
+  zdjecie: "img/szalwia-migdal.jpg"
+  alt: "Gładki manicure hybrydowy w kolorze stonowanej szałwii na paznokciach w kształcie migdała"
+  wyroznione: true
+
+- tytul: "Czerwień z efektem lustra"
+  kategoria: "efekty"
+  etykieta: "Efekty i kolory"
+  opis: "Ognista czerwień wykończona lustrzanym pyłkiem chrome, która mieni się złotymi refleksami."
+  zdjecie: "img/czerwien-lustro.jpg"
+  alt: "Intensywnie czerwone paznokcie z metalicznym efektem lustra chrome"
+  wyroznione: true
+
+- tytul: "Lawenda i złota folia"
+  kategoria: "zdobienia"
+  etykieta: "Zdobienia"
+  opis: "Delikatny liliowy odcień z malowanym efektem pociągnięć pędzla i płatkami złotej folii."
+  zdjecie: "img/lawenda-zloto.jpg"
+  alt: "Liliowy manicure z artystycznym białym zdobieniem i akcentami ze złotej folii"
+  wyroznione: true
+
+- tytul: "French migdał"
+  kategoria: "french"
+  etykieta: "French"
+  opis: "Smukły migdał z głęboką linią uśmiechu – kwintesencja kobiecej klasyki."
+  zdjecie: "img/french-migdal.jpg"
+  alt: "Elegancki french manicure na długich paznokciach w kształcie migdała"
+  wyroznione: true
+
+- tytul: "Pastelowy róż z cytrynkami"
+  kategoria: "zdobienia"
+  etykieta: "Zdobienia"
+  opis: "Lekka, wakacyjna stylizacja: mleczny róż, drobne białe groszki i ręcznie malowane cytrynki."
+  zdjecie: "img/pastel-cytrynki.jpg"
+  alt: "Pastelowe różowe paznokcie ze zdobieniem w białe kropki i ręcznie malowane cytrynki"
+  wyroznione: true
+
+- tytul: "Letnie ombre brzoskwiniowo-różowe"
+  kategoria: "efekty"
+  etykieta: "Efekty i kolory"
+  opis: "Miękkie, soczyste przejście kolorów od ciepłej brzoskwini po intensywny róż."
+  zdjecie: "img/ombre-brzoskwinia.jpg"
+  alt: "Letni manicure ombre w odcieniach soczystej brzoskwini i neonowego różu"
+  wyroznione: true
+
+- tytul: "Neonowy french V-shape"
+  kategoria: "french"
+  etykieta: "French"
+  opis: "Naturalna baza nude przełamana geometryczną, fuksjową końcówką na kwadratowych paznokciach."
+  zdjecie: "img/french-neon-roz.jpg"
+  alt: "Kwadratowe paznokcie w kolorze nude z geometrycznym neonoworóżowym frenchem"
+  wyroznione: false
+
+- tytul: "Świąteczny french ze śnieżynką"
+  kategoria: "sezonowe"
+  etykieta: "Sezonowe"
+  opis: "Czerwono-złoty french, brokatowy akcent oraz ręcznie malowana zimowa śnieżynka."
+  zdjecie: "img/swiateczny-french.jpg"
+  alt: "Zimowa stylizacja z czerwono-złotym frenchem, brokatową czerwienią i ręcznie malowaną śnieżynką"
+  wyroznione: false
+
+- tytul: "Czerwień, szampańskie złoto i śnieżynka"
+  kategoria: "sezonowe"
+  etykieta: "Sezonowe"
+  opis: "Klasyczna świąteczna czerwień w duecie ze złotym brokatem i subtelnym zimowym zdobieniem."
+  zdjecie: "img/swiateczne-zloto.jpg"
+  alt: "Świąteczne paznokcie w kolorze głębokiej czerwieni ze złotym brokatem i białą śnieżynką"
+  wyroznione: false
+
+- tytul: "Mikołajkowa czerwień"
+  kategoria: "sezonowe"
+  etykieta: "Sezonowe"
+  opis: "Lśniąca, czysta czerwień na krótkiej płytce z uroczym świątecznym akcentem na jednym paznokciu."
+  zdjecie: "img/mikolajkowa-czerwien.jpg"
+  alt: "Krótkie czerwone paznokcie z subtelnym świątecznym motywem na paznokciu serdecznym"
+  wyroznione: false
+
+- tytul: "Neonowy koral z arbuzem"
+  kategoria: "zdobienia"
+  etykieta: "Zdobienia"
+  opis: "Soczysty letni neon z ręcznie malowanym, precyzyjnym plasterkiem arbuza."
+  zdjecie: "img/neon-arbuz.jpg"
+  alt: "Neonowo-koralowe paznokcie z ręcznie malowanym zdobieniem w kształcie arbuza"
+  wyroznione: false
+
+- tytul: "Pastelowy lila i neonowe kropki"
+  kategoria: "zdobienia"
+  etykieta: "Zdobienia"
+  opis: "Wiosenno-letnie połączenie pastelowego fioletu i kolorowych kropek na naturalnej bazie. Wykonanie: Daria."
+  zdjecie: "img/lila-kropki.jpg"
+  alt: "Pastelowe liliowe paznokcie z neonowym zdobieniem w żółte, pomarańczowe i limonkowe kropki"
+  wyroznione: false

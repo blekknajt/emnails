@@ -1,0 +1,62 @@
+# Lista usług prezentowana na stronie głównej i na podstronie /uslugi/.
+# Każda pozycja korzysta z autentycznych zdjęć stylizacji z assets/img/.
+
+- nazwa: "Manicure hybrydowy"
+  kategoria: "Dłonie"
+  opis: "Trwała, starannie dopracowana stylizacja dopasowana do naturalnej płytki i Twojego stylu – od ponadczasowego nude i pasteli po głębokie sezonowe odcienie."
+  zdjecie: "img/szalwia-migdal.jpg"
+  alt: "Manicure hybrydowy w odcieniu stonowanej szałwii na paznokciach w kształcie migdała"
+  szczegoly:
+    - "Dokładne opracowanie skórek i kształtu płytki"
+    - "Pomoc w doborze idealnego koloru do karnacji i okazji"
+    - "Głęboki połysk i trwałość na wiele tygodni"
+
+- nazwa: "French i micro-french"
+  kategoria: "Klasyka i nowoczesność"
+  opis: "Perfekcyjna linia uśmiechu w klasycznej bieli, delikatnym micro-frenchu albo nowoczesnej, kolorowej wersji na kwadracie lub migdale."
+  zdjecie: "img/french-kwadrat.jpg"
+  alt: "Klasyczny french manicure z białą końcówką na pudroworóżowej bazie i paznokciach w kształcie kwadratu"
+  szczegoly:
+    - "Klasyczny biały french w wersji migdał i kwadrat"
+    - "Subtelny micro-french oraz kolorowe wariacje"
+    - "Eleganckie wykończenie na co dzień i na wielkie wyjścia"
+
+- nazwa: "Efekty specjalne: cat eye i lustro"
+  kategoria: "Efekty"
+  opis: "Magnetyczny blask cat eye, spektakularny efekt lustra (chrome) i płynne przejścia ombre, które przyciągają spojrzenia w każdym świetle."
+  zdjecie: "img/jesienne-cat-eye.jpg"
+  alt: "Jesienna stylizacja paznokci z magnetycznym efektem cat eye w ciepłym bursztynowo-brązowym odcieniu"
+  szczegoly:
+    - "Magnetyczny efekt cat eye w ciepłych i chłodnych tonacjach"
+    - "Lustrzane pyłki chrome o intensywnym połysku"
+    - "Miękkie gradienty i letnie ombre"
+
+- nazwa: "Zdobienia ręczne i okazjonalne"
+  kategoria: "Nail art"
+  opis: "Ręcznie malowane wzory, delikatne akcenty ze złotej folii, motywy kwiatowe, letnie owoce i zimowe śnieżynki – każdy detal powstaje na zamówienie."
+  zdjecie: "img/lawenda-zloto.jpg"
+  alt: "Liliowy manicure ze zdobieniem w stylu pociągnięć pędzla i płatkami złotej folii"
+  szczegoly:
+    - "Autorskie zdobienia malowane cienkim pędzelkiem"
+    - "Złota folia, brokatowe akcenty i minimalistyczne detale"
+    - "Stylizacje ślubne, świąteczne, wakacyjne i na wyjątkowe okazje"
+
+- nazwa: "Pedicure i stylizacja stóp"
+  kategoria: "Stopy"
+  opis: "Zadbane, gładkie stopy i estetyczna stylizacja hybrydowa paznokci u stóp – komfort i pewność siebie w sezonie sandałków oraz przez cały rok."
+  zdjecie: "img/pastel-cytrynki.jpg"
+  alt: "Pastelowy różowy manicure ze zdobieniem w drobne kropki i ręcznie malowane cytrynki"
+  szczegoly:
+    - "Estetyczne opracowanie paznokci i skórek"
+    - "Trwały kolor dopasowany do dłoni lub w ulubionym odcieniu"
+    - "Dostępność terminów indywidualnych oraz last minute"
+
+- nazwa: "Indywidualny dobór kształtu i koloru"
+  kategoria: "Doradztwo"
+  opis: "Nie masz pewności, czy lepiej sprawdzi się krótki kwadrat, delikatny owal czy smukły migdał? Doradzimy formę i odcień, w których poczujesz się najlepiej."
+  zdjecie: "img/french-migdal.jpg"
+  alt: "Błyszczący french manicure w kształcie migdała na różowej bazie"
+  szczegoly:
+    - "Praca na profesjonalnych produktach cenionych przez klientki"
+    - "Spokojna, przyjazna atmosfera bez pośpiechu"
+    - "Dbałość o higienę, komfort i trwałość każdej stylizacji"
